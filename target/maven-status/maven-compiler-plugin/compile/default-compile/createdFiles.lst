@@ -1,8 +1,0 @@
-nl/ensignprojects/dockeradmin/container/ContainerImpl.class
-nl/ensignprojects/dockeradmin/FXMLContainerController.class
-nl/ensignprojects/dockeradmin/rest/DockerEndpointQuery.class
-nl/ensignprojects/dockeradmin/container/ContainerEngine.class
-nl/ensignprojects/dockeradmin/container/Container.class
-nl/ensignprojects/dockeradmin/config/ApplicationConfig.class
-nl/ensignprojects/dockeradmin/container/ContainerFX.class
-nl/ensignprojects/dockeradmin/MainApp.class
