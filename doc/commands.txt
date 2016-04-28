@@ -1,3 +1,0 @@
- curl --unix-socket /var/run/docker.sock http:/containers/json?all=1 > /tmp/containers.json
-
- python -m json.tool ./containers.json 
