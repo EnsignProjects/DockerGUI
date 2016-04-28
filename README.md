@@ -9,7 +9,7 @@ You can change the defaults of the configuration (hostname and port number) in y
 
 When you start the application the configuration file will be created.  
 
- ## To compile the source
+ # To compile the source
  ```bash
  mvn install
  ```
