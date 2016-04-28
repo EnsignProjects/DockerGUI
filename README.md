@@ -9,9 +9,7 @@ You can change the defaults of the configuration (hostname and port number) in y
 
 When you start the application the configuration file will be created.  
 
- # Compile the source
- 
- djagijeaf aefwefwaf 
+## Compile the source
  
  
  ```bash
