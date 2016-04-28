@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<TabPane tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8.0.72" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nl.ensignprojects.dockeradmin.FXMLContainerController">
+  <tabs>
+    <Tab text="Containers">
+      <content>
+        <AnchorPane prefHeight="513.0" prefWidth="705.0">
+               <children>
+                  <TableView fx:id="tableContainers" editable="true" layoutX="14.0" layoutY="65.0" minHeight="376.0" minWidth="677.0" prefHeight="376.0" prefWidth="677.0" AnchorPane.bottomAnchor="72.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="65.0">
+                    <columns>
+                      <TableColumn fx:id="check" maxWidth="75.0" prefWidth="75.0" text="Select" />
+                      <TableColumn fx:id="state" editable="false" maxWidth="200.0" prefWidth="200.0" text="State" />
+                      <TableColumn fx:id="name" editable="false" maxWidth="200.0" prefWidth="200.0" text="Name container" />
+                      <TableColumn fx:id="nameImage" editable="false" maxWidth="200.0" prefWidth="200.0" text="Name image" />
+                    </columns>
+                  </TableView>
+                  <ButtonBar fx:id="buttonBarContainer" layoutX="14.0" layoutY="427.0" prefHeight="40.0" prefWidth="178.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0">
+                    <buttons>
+                        <Button fx:id="startContainer" mnemonicParsing="false" onAction="#startContainerAction" text="Start" />
+                        <Button fx:id="stopContainer" mnemonicParsing="false" onAction="#stopContainerAction" text="Stop" />
+                        <Button fx:id="removeContainer" mnemonicParsing="false" onAction="#removeContainerAction" text="Remove" />
+                    </buttons>
+                  </ButtonBar>
+                  <ButtonBar buttonMinWidth="50.0" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0">
+                    <buttons>
+                        <Button maxWidth="130.0" minWidth="50.0" mnemonicParsing="false" onAction="#selectAllAction" prefWidth="130.0" text="Select all" />
+                        <Button maxWidth="130.0" minWidth="130.0" mnemonicParsing="false" onAction="#deSelectAllAction" prefWidth="130.0" text="Deselect all" />
+                        <Button maxWidth="150.0" minWidth="150.0" mnemonicParsing="false" onAction="#invertSelection" prefWidth="150.0" text="Invert selection" />
+                    </buttons>
+                  </ButtonBar>
+               </children></AnchorPane>
+      </content>
+    </Tab>
+    <Tab disable="true" text="Images">
+      <content>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+      </content>
+    </Tab>
+  </tabs>
+</TabPane>
