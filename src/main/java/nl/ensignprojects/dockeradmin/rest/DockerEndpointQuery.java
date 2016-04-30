@@ -8,7 +8,6 @@ package nl.ensignprojects.dockeradmin.rest;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -30,6 +29,10 @@ import org.json.simple.parser.ParseException;
  */
 public class DockerEndpointQuery {
     
+    private static final String CONTAINERS = "/containers/";
+    
+    private DockerEndpointQuery() {}
+    
     private static String getAddress() {
         ApplicationConfig ac = ApplicationConfig.getInstance();
         
@@ -42,7 +45,7 @@ public class DockerEndpointQuery {
      * @param container 
      */
     public static void stopContainer(Container container) {
-        performQuery("/containers/" + container.getId() + "/stop", "POST");       
+        performQuery(CONTAINERS + container.getId() + "/stop", "POST");       
     }
     
     /**
@@ -50,7 +53,7 @@ public class DockerEndpointQuery {
      * @param container 
      */
     public static void startContainer(Container container) {
-        performQuery("/containers/" + container.getId() + "/start", "POST");       
+        performQuery(CONTAINERS + container.getId() + "/start", "POST");       
     }
     
     /**
@@ -59,8 +62,8 @@ public class DockerEndpointQuery {
      * @param container 
      */
     public static void removeContainer(Container container) {
-        performQuery("/containers/" + container.getId() + "/stop", "POST");       
-        performQuery("/containers/" + container.getId(), "DELETE");       
+        performQuery(CONTAINERS + container.getId() + "/stop", "POST");       
+        performQuery(CONTAINERS + container.getId(), "DELETE");       
     }
     
     private static void performQuery(String endpoint, String requestMethod) {
@@ -70,8 +73,6 @@ public class DockerEndpointQuery {
             connection.setRequestMethod(requestMethod);
             Logger.getLogger(DockerEndpointQuery.class.getName()).log(Level.INFO, "HTTP status on stop container: {0}", connection.getResponseCode());
             connection.disconnect();
-        } catch (MalformedURLException ex) {
-            Logger.getLogger(DockerEndpointQuery.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
             Logger.getLogger(DockerEndpointQuery.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -110,8 +111,6 @@ public class DockerEndpointQuery {
                 containerList.add(container);
             }
                 
-        } catch (MalformedURLException ex) {
-            Logger.getLogger(DockerEndpointQuery.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException | ParseException ex) {
             Logger.getLogger(DockerEndpointQuery.class.getName()).log(Level.SEVERE, null, ex);            
         }

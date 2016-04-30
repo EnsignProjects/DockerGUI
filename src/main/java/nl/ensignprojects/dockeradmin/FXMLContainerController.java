@@ -12,7 +12,6 @@ import nl.ensignprojects.dockeradmin.container.ContainerFX;
 import javafx.fxml.FXML;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.CheckBoxTableCell;
@@ -41,17 +40,17 @@ public class FXMLContainerController {
     private TableColumn<ContainerFX, String> state;    
     
     @FXML
-    private void startContainerAction(ActionEvent event) {
+    private void startContainerAction() {
         this.containerAction(c -> DockerEndpointQuery.startContainer(c.getContainer()));
     }
     
     @FXML
-    private void stopContainerAction(ActionEvent event) {
+    private void stopContainerAction() {
         this.containerAction(c -> DockerEndpointQuery.stopContainer(c.getContainer()));
     }
     
     @FXML
-    private void removeContainerAction(ActionEvent event) {
+    private void removeContainerAction() {
         this.containerAction(c -> DockerEndpointQuery.removeContainer(c.getContainer()));
     }
     
@@ -59,22 +58,22 @@ public class FXMLContainerController {
         tableContainers.getItems()
                 .filtered(c -> c.getCheck())
                 .forEach(action);
-        this.deSelectAllAction(new ActionEvent());
+        this.deSelectAllAction();
         tableContainers.setItems(parseInitContainers());
     }
     
     @FXML
-    private void selectAllAction(ActionEvent event) {
+    private void selectAllAction() {
         tableContainers.getItems().forEach(c -> c.setCheck(Boolean.TRUE));
     }
     
     @FXML 
-    private void deSelectAllAction(ActionEvent event) {
+    private void deSelectAllAction() {
         tableContainers.getItems().forEach(c -> c.setCheck(Boolean.FALSE));
     }
 
     @FXML
-    private void invertSelection(ActionEvent event) {
+    private void invertSelection() {
         tableContainers.getItems().forEach(c -> c.setCheck(!c.getCheck()));
     }
     
@@ -97,14 +96,11 @@ public class FXMLContainerController {
         List<Container> containerList = DockerEndpointQuery.getAllContainers();
         List<ContainerFX> containerFXList = new ArrayList<>();
         
-        containerList.stream().forEach((c) -> {
-            containerFXList.add(new ContainerFX(c));
-        });
-        
-        ObservableList<ContainerFX> dcs = 
-                FXCollections.observableArrayList(containerFXList);
-        
-        return dcs;
+        containerList.stream().forEach(c -> 
+            containerFXList.add(new ContainerFX(c))
+        );
+                
+        return FXCollections.observableArrayList(containerFXList);
     }    
     
 }

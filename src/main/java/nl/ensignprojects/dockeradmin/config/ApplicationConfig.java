@@ -39,8 +39,7 @@ public class ApplicationConfig {
         Properties prop = new Properties();
         
         if (configFileExists) {
-            try {
-                Reader reader = new FileReader(configFile.toFile());
+            try (Reader reader = new FileReader(configFile.toFile())) {
                 prop.load(reader);
                 host = prop.getProperty("host");
                 port = prop.getProperty("port");

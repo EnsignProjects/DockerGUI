@@ -52,6 +52,7 @@ public class ContainerFX {
         this.name.set(name);
     }
     
+    @Override
     public String toString() {
         return "Value changed to: " 
                 + this.check.getValue() 

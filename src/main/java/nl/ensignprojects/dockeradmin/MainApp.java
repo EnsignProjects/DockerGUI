@@ -25,8 +25,6 @@ public class MainApp extends Application {
         stage.setScene(scene);
         stage.show();
         
-//        ApplicationConfig ac = ApplicationConfig.getInstance();
-//        System.out.println(ac.getHost()+":"+ac.getPort());
     }
 
     /**
